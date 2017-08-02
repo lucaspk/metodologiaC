@@ -5,6 +5,7 @@ package Sorting;
  */
 public abstract class Sort {
 
+    /*Que sort a nossa ♫*/
     protected abstract void sort(Double array[]);
 
 }

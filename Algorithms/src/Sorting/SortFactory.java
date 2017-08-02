@@ -11,9 +11,9 @@ public class SortFactory {
         Sort sortAlgoChoosed = new InsertionSort();
 
         if (sortAlgorithm.equals("MergeSort")) {
-
+            sortAlgoChoosed = new MergeSort();
         } else if (sortAlgorithm.equals("QuickSort")) {
-
+            sortAlgoChoosed = new QuickSort();
         }
         return sortAlgoChoosed;
     }

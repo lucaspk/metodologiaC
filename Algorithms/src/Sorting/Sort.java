@@ -6,6 +6,7 @@ package Sorting;
 public abstract class Sort {
 
     /*Que sort a nossa ♫*/
-    protected abstract void sort(Double array[]);
+    protected abstract void sort(Double array[], boolean isAscending);
 
+    public abstract void sort(Double[] array, Range range, boolean isAscending);
 }

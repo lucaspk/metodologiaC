@@ -6,29 +6,36 @@ package Sorting;
 public class QuickSort extends Sort {
 
     @Override
-    protected void sort(Double[] array) {
-        sort(array, 0, array.length - 1);
+    protected void sort(Double[] array, boolean isAscending) {
+        sort(array, new Range(0, array.length - 1), isAscending);
     }
 
-    private void sort(Double[] array,int leftIndex, int rightIndex) {
-        if (leftIndex < rightIndex && leftIndex >= 0){
-            int pivot_position = partition(array, leftIndex, rightIndex);
-            sort(array, leftIndex, pivot_position - 1);
-            sort(array, pivot_position + 1, rightIndex);
+    public void sort(Double[] array, Range range, boolean isAscending) {
+        if (range.getLeftIndex() < range.getRightIndex() && range.getLeftIndex() >= 0){
+            int pivot_position = partition(array, new Range(range.getLeftIndex(), range.getRightIndex()), isAscending);
+            sort(array, new Range(range.getLeftIndex(), pivot_position - 1), isAscending);
+            sort(array, new Range(pivot_position + 1, range.getRightIndex()), isAscending);
         }
     }
 
-    private int partition(Double[] array, int left, int right){
-        int pivot_index = left;
-        Double pivot = array[left];
+    public int partition(Double[] array, Range range, boolean isAscending){
+        int pivot_index = range.getLeftIndex();
+        Double pivot = array[range.getLeftIndex()];
 
-        for (int j = pivot_index + 1; j <= right; j++) {
-            if (array[j].compareTo(pivot) < 0){
-                pivot_index++;
-                swap(array, pivot_index, j);
+        for (int j = pivot_index + 1; j <= range.getRightIndex(); j++) {
+            if (isAscending) {
+                if (array[j].compareTo(pivot) < 0){
+                    pivot_index++;
+                    swap(array, pivot_index, j);
+                }
+            } else {
+                if (array[j].compareTo(pivot) > 0){
+                    pivot_index++;
+                    swap(array, pivot_index, j);
+                }
             }
         }
-        swap(array, left, pivot_index);
+        swap(array, range.getLeftIndex(), pivot_index);
 
         return pivot_index;
     }

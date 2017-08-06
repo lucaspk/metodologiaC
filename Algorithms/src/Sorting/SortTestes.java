@@ -156,7 +156,7 @@ public class SortTestes {
         evaluateSort(is);
     }
 
-    /**Avalia meu algoritmo de ordenação contra a implementação fornecida pelo próprio java.
+    /**Avalia meu algoritmo de ordenação contra a implementação fornecida pelo próprio Java.
      * Isso fornece confiança de que minha implementação está adequada.*/
     private void evaluateSort(Sort mySort) {
         for (Double[] array: randomArrays) {

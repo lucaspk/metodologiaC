@@ -11,18 +11,18 @@ public class QuickSort extends Sort {
     }
 
     public void sort(Double[] array, Range range, boolean isAscending) {
-        if (range.getLeftIndex() < range.getRightIndex() && range.getLeftIndex() >= 0){
-            int pivot_position = partition(array, new Range(range.getLeftIndex(), range.getRightIndex()), isAscending);
-            sort(array, new Range(range.getLeftIndex(), pivot_position - 1), isAscending);
-            sort(array, new Range(pivot_position + 1, range.getRightIndex()), isAscending);
+        if (range.getBeginIndex() < range.getEndIndex() && range.getBeginIndex() >= 0){
+            int pivot_position = partition(array, new Range(range.getBeginIndex(), range.getEndIndex()), isAscending);
+            sort(array, new Range(range.getBeginIndex(), pivot_position - 1), isAscending);
+            sort(array, new Range(pivot_position + 1, range.getEndIndex()), isAscending);
         }
     }
 
     public int partition(Double[] array, Range range, boolean isAscending){
-        int pivot_index = range.getLeftIndex();
-        Double pivot = array[range.getLeftIndex()];
+        int pivot_index = range.getBeginIndex();
+        Double pivot = array[range.getBeginIndex()];
 
-        for (int j = pivot_index + 1; j <= range.getRightIndex(); j++) {
+        for (int j = pivot_index + 1; j <= range.getEndIndex(); j++) {
             if (isAscending) {
                 if (array[j].compareTo(pivot) < 0){
                     pivot_index++;
@@ -35,7 +35,7 @@ public class QuickSort extends Sort {
                 }
             }
         }
-        swap(array, range.getLeftIndex(), pivot_index);
+        swap(array, range.getBeginIndex(), pivot_index);
 
         return pivot_index;
     }

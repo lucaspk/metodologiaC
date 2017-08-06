@@ -1,19 +1,30 @@
 package Sorting;
 
 public class Range {
-    private final int leftIndex;
-    private final int rightIndex;
+    private int beginIndex;
+    private int endIndex;
+    private int midIndex;
 
-    public Range(int leftIndex, int rightIndex) {
-        this.leftIndex = leftIndex;
-        this.rightIndex = rightIndex;
+    public Range(int beginIndex, int endIndex) {
+        this.beginIndex = beginIndex;
+        this.endIndex = endIndex;
     }
 
-    public int getLeftIndex() {
-        return leftIndex;
+    public Range(int beginIndex, int midIndex, int endIndex) {
+        this.beginIndex = beginIndex;
+        this.midIndex = midIndex;
+        this.endIndex = endIndex;
     }
 
-    public int getRightIndex() {
-        return rightIndex;
+    public int getBeginIndex() {
+        return beginIndex;
+    }
+
+    public int getEndIndex() {
+        return endIndex;
+    }
+
+    public int getMidIndex() {
+        return midIndex;
     }
 }

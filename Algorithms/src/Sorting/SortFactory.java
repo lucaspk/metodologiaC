@@ -5,8 +5,10 @@ package Sorting;
  */
 public class SortFactory {
 
-    /** O algoritmo de ordenação default é o insertion sortAscending.
-     * 'MergeSort' to create the MergeSort algorithm; 'QuickSort', to create QuickSort.
+    /** O algoritmo de ordenação default é o Insertion Sort.
+     *  Digite'MergeSort' para criar uma instância do MergeSort algorithm;
+     *  'QuickSort', se quiser criar o QuickSort. Qualquer outro nome digitado
+     *  selecionará o Insertion Sort.
     * */
     public static Sort createSort(final String sortAlgorithm) {
         Sort sortAlgoChoosed = new InsertionSort();

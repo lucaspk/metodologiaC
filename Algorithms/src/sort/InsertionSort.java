@@ -18,14 +18,17 @@ public class InsertionSort extends Sort {
 
     public void sort(Double[] array, Range range, boolean isAscending) {
         if (isAscending) {
-            sortAscending(array, range.getLeftIndex(), range.getRightIndex());
+            sortAscending(array, new Range(range.getBeginIndex(), range.getEndIndex()));
         } else {
-            sortDescending(array, range.getLeftIndex(), range.getRightIndex());
+            sortDescending(array, new Range(range.getBeginIndex(), range.getEndIndex()));
         }
     }
 
-    private void sortAscending(Double[] array, int leftIndex, int rightIndex) {
-        for (int j = leftIndex; j < rightIndex; j++) {
+    private void sortAscending(Double[] array, Range range) {
+        final int beginIndex = range.getBeginIndex();
+        final int endIndex = range.getEndIndex();
+
+        for (int j = beginIndex; j < endIndex; j++) {
             int i = j - 1;
             Double key = array[j];
             while (i >= 0 && key < array[i]) {
@@ -36,8 +39,11 @@ public class InsertionSort extends Sort {
         }
     }
 
-    private void sortDescending(Double[] array, int leftIndex, int rightIndex) {
-        for (int j = leftIndex; j < rightIndex; j++) {
+    private void sortDescending(Double[] array, Range range) {
+        final int beginIndex = range.getBeginIndex();
+        final int endIndex = range.getEndIndex();
+
+        for (int j = beginIndex; j < endIndex; j++) {
             int i = j - 1;
             Double key = array[j];
             while (i >= 0 && key > array[i]) {

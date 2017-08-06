@@ -21,26 +21,30 @@ public class MergeSort extends Sort {
     }
 
     public void sort(Double[] array, Range range, boolean isAscending) {
-        if (range.getLeftIndex() < range.getRightIndex()){
-            int mid = (range.getRightIndex() + range.getLeftIndex()) / 2;
-            sort(array, new Range(range.getLeftIndex(), mid), isAscending);
-            sort(array, new Range(mid + 1, range.getRightIndex()), isAscending);
+        if (range.getBeginIndex() < range.getEndIndex()){
+            int mid = (range.getEndIndex() + range.getBeginIndex()) / 2;
+            sort(array, new Range(range.getBeginIndex(), mid), isAscending);
+            sort(array, new Range(mid + 1, range.getEndIndex()), isAscending);
             if (isAscending){
-                mergeTwoSortedListAsc(array, range.getLeftIndex(), mid, range.getRightIndex());
+                mergeTwoSortedListAsc(array, new Range(range.getBeginIndex(), mid, range.getEndIndex()));
             } else {
-                mergeTwoSortedListDesc(array, range.getLeftIndex(), mid, range.getRightIndex());
+                mergeTwoSortedListDesc(array, new Range(range.getBeginIndex(), mid, range.getEndIndex()));
             }
         }
     }
 
-    private void mergeTwoSortedListAsc(Double[] array, int low, int middle, int high) {
-        helper = Arrays.copyOfRange(array, low, high + 1);
+    private void mergeTwoSortedListAsc(Double[] array, Range range) {
+        final int beginIndex = range.getBeginIndex();
+        final int endIndex = range.getEndIndex();
+        final int midIndex = range.getMidIndex();
+
+        helper = Arrays.copyOfRange(array, beginIndex, endIndex + 1);
 
         int i = 0;
-        int j = middle - low + 1;
-        int k = low;
+        int j = midIndex - beginIndex + 1;
+        int k = beginIndex;
 
-        while (i <= middle - low && j <= high - low) {
+        while (i <= midIndex - beginIndex && j <= endIndex - beginIndex) {
             if (helper[i].compareTo(helper[j]) < 0) {
                 array[k] = helper[i];
                 i++;
@@ -50,22 +54,27 @@ public class MergeSort extends Sort {
             }
             k++;
         }
-        while (i <= middle - low) {
+        while (i <= midIndex - beginIndex) {
             array[k++] = helper[i++];
         }
-        while (j <= high - low) {
+        while (j <= endIndex - beginIndex) {
             array[k++] = helper[j++];
         }
     }
 
-    private void mergeTwoSortedListDesc(Double[] array, int low, int middle, int high) {
-        helper = Arrays.copyOfRange(array, low, high + 1);
+    private void mergeTwoSortedListDesc(Double[] array, Range range) {
+        final int beginIndex = range.getBeginIndex();
+        final int endIndex = range.getEndIndex();
+        final int midIndex = range.getMidIndex();
+
+        helper = Arrays.copyOfRange(array, beginIndex, endIndex + 1);
 
         int i = 0;
-        int j = middle - low + 1;
-        int k = low;
+        int j = midIndex - beginIndex + 1;
+        int k = beginIndex;
 
-        while (i <= middle - low && j <= high - low) {
+        while (i <= midIndex - beginIndex &&
+                j <= endIndex - beginIndex) {
             if (helper[i].compareTo(helper[j]) > 0) {
                 array[k] = helper[i];
                 i++;
@@ -75,10 +84,10 @@ public class MergeSort extends Sort {
             }
             k++;
         }
-        while (i <= middle - low) {
+        while (i <= midIndex - beginIndex) {
             array[k++] = helper[i++];
         }
-        while (j <= high - low) {
+        while (j <= endIndex - beginIndex) {
             array[k++] = helper[j++];
         }
     }

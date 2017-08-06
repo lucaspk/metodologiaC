@@ -21,7 +21,8 @@ public class ArrayGenerator {
 
         Double[][] randomMatrix = new Double[TOTAL_OF_ARRAYS][TOTAL_OF_ARRAYS];
 
-        if(!Double.valueOf(MAX_NUMBER - MIN_NUMBER).isInfinite()) {
+        final boolean isNotLargestPossibleDouble = !Double.valueOf(MAX_NUMBER - MIN_NUMBER).isInfinite();
+        if(isNotLargestPossibleDouble) {
             while (curr_array < TOTAL_OF_ARRAYS) {
                 Double[] array = new Double[TOTAL_NUMBS_IN_ARRAY];
                 for (int i = 0; i < TOTAL_NUMBS_IN_ARRAY; i++) {

@@ -12,8 +12,12 @@ public class ArrayGenerator {
     private final static double MAX_NUMBER = 1000000.0;
     private final static double MIN_NUMBER = -1000000.0;
 
-    private final static int TOTAL_OF_ARRAYS = 50;
-    private final static int TOTAL_NUMBS_IN_ARRAY = 100;
+    private final static int TOTAL_OF_ARRAYS = 5000;
+    private final static int TOTAL_NUMBS_IN_ARRAY = 10000;
+
+    public static int getArrayMaxSize() {
+        return TOTAL_NUMBS_IN_ARRAY;
+    }
 
     public static Double[][] generateArraysWithRandomNumbers() {
         int curr_array = 0;

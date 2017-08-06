@@ -3,11 +3,10 @@ package sort;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
-
 import util.ArrayGenerator;
 import util.SortAlgorithm;
+
+import java.util.Arrays;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -139,18 +138,21 @@ public class SortTestes {
         assertArrayEquals(emptyArray, empty);
     }
 
+    /*Esse teste demora na faixa de 60-70 segundos para rodar.*/
     @Test
     public void automatedTestForQuickSort(){
         Sort qs = SortFactory.createSort(SortAlgorithm.QUICK);
         evaluateSort(qs);
     }
 
+    /*Esse teste demora na faixa de 60-65 segundos para rodar.*/
     @Test
     public void automatedTestForMergeSort(){
         Sort ms = SortFactory.createSort(SortAlgorithm.MERGE);
         evaluateSort(ms);
     }
 
+    /*Esse teste demora na faixa de 3 minutos e 10-20 segundos para rodar.*/
     @Test
     public void automatedTestForInsertionSort(){
         Sort is = SortFactory.createSort(SortAlgorithm.INSERTION);
@@ -161,7 +163,7 @@ public class SortTestes {
      * Isso fornece confiança de que minha implementação está adequada.*/
     private void evaluateSort(Sort mySort) {
         for (Double[] array: randomArrays) {
-            Double[] tmp = Arrays.copyOfRange(array, 0, 100);
+            Double[] tmp = Arrays.copyOfRange(array, 0, ArrayGenerator.getArrayMaxSize());
             mySort.sort(array, true);
             Arrays.sort(tmp);
             Assert.assertArrayEquals(tmp, array);

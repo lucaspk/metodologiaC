@@ -1,5 +1,12 @@
 package runner;
 
+import sort.Sort;
+import sort.SortFactory;
+import util.CSVUtils;
+import util.OutputEntry;
+import util.SortAlgorithm;
+import util.SortOrder;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -8,13 +15,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-
-import sort.Sort;
-import sort.SortFactory;
-import util.CSVUtils;
-import util.OutputEntry;
-import util.SortAlgorithm;
-import util.SortOrder;
 
 /**
  * Created by Wesley Silva on 06/08/2017.
@@ -55,7 +55,7 @@ public class Main {
     }
 
     public static List<OutputEntry> applySort(SortAlgorithm algorithmType, List<Double[]> input, SortOrder sortOrder, int replications) {
-        List<OutputEntry> outputEntries = new ArrayList<>();
+        List<OutputEntry> outputEntries = new ArrayList<OutputEntry>();
         Sort sort = SortFactory.createSort(algorithmType);
         for (Double[] array : input) {
             for (int i = 0 ; i <= replications; i++) {
@@ -69,7 +69,7 @@ public class Main {
     }
 
     public static List<Double[]> convertInput(String argInput) {
-        List<Double[]> content = new ArrayList<>();
+        List<Double[]> content = new ArrayList<Double[]>();
 
         try {
             File inputFile = new File(argInput);

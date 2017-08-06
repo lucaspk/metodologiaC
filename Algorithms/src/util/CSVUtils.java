@@ -11,7 +11,7 @@ public class CSVUtils {
     private static final char DEFAULT_SEPARATOR = ',';
 
     public static void writeLine(Writer w, List<Double> values) throws IOException {
-        List<String> v = new ArrayList<>();
+        List<String> v = new ArrayList<String>();
         for (Double num : values) {
             v.add(String.valueOf(num));
         }
@@ -20,7 +20,7 @@ public class CSVUtils {
     }
 
     public static void writeLine(Writer w, OutputEntry value) throws IOException {
-        List<String> v = new ArrayList<>();
+        List<String> v = new ArrayList<String>();
 
         v.add(String.valueOf(value.getInput()));
         v.add(String.valueOf(value.getAlgorithm()));
@@ -78,7 +78,7 @@ public class CSVUtils {
 
     public static List<String> parseLine(String cvsLine, char separators, char customQuote) {
 
-        List<String> result = new ArrayList<>();
+        List<String> result = new ArrayList<String>();
 
         //if empty, return!
         if (cvsLine == null && cvsLine.isEmpty()) {

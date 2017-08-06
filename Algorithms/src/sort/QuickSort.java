@@ -1,4 +1,6 @@
-package Sorting;
+package sort;
+
+import util.Range;
 
 /**
  * Created by Lucas on 01/08/2017.
@@ -6,8 +8,12 @@ package Sorting;
 public class QuickSort extends Sort {
 
     @Override
-    protected void sort(Double[] array, boolean isAscending) {
+    public long sort(Double[] array, boolean isAscending) {
+        long startTime = System.nanoTime();
         sort(array, new Range(0, array.length - 1), isAscending);
+        long endTime = System.nanoTime();
+
+        return endTime - startTime;
     }
 
     public void sort(Double[] array, Range range, boolean isAscending) {

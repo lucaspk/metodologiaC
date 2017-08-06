@@ -1,6 +1,8 @@
-package Sorting;
+package sort;
 
 import java.util.Arrays;
+
+import util.Range;
 
 /**
  * Created by Lucas on 01/08/2017.
@@ -10,11 +12,14 @@ public class MergeSort extends Sort {
     private Double[] helper;
 
     @Override
-    protected void sort(Double[] array, boolean isAscending) {
+    public long sort(Double[] array, boolean isAscending) {
+        long startTime = System.nanoTime();
         sort(array, new Range(0, array.length - 1), isAscending);
+        long endTime = System.nanoTime();
+
+        return endTime - startTime;
     }
 
-    @Override
     public void sort(Double[] array, Range range, boolean isAscending) {
         if (range.getLeftIndex() < range.getRightIndex()){
             int mid = (range.getRightIndex() + range.getLeftIndex()) / 2;

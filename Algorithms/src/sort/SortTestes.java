@@ -1,4 +1,4 @@
-package Sorting;
+package sort;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -6,34 +6,35 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
+import util.ArrayGenerator;
+import util.SortAlgorithm;
+
 import static org.junit.Assert.assertArrayEquals;
 
 /**
  * Created by Lucas on 02/08/2017.
  */
 public class SortTestes {
-    protected final Double[] ascendingArray = {-1.0, -1.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0};
-    protected final Double[] descendingArray = {10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, -1.0, -1.0};
-    protected final Double[] shuffledArray = {10.0, -1.0, -1.0, 3.0, 9.0, 5.0, 8.0, 4.0, 7.0, 6.0};
-    protected final Double[] shuffledNegArray = {-10.0, -1.0, -1.0, -3.0, -9.0, -5.0, -8.0, -4.0, -7.0, -6.0};
-    protected final Double[] emptyArray = {};
+    private final Double[] ascendingArray = {-1.0, -1.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0};
+    private final Double[] descendingArray = {10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, -1.0, -1.0};
+    private final Double[] shuffledArray = {10.0, -1.0, -1.0, 3.0, 9.0, 5.0, 8.0, 4.0, 7.0, 6.0};
+    private final Double[] shuffledNegArray = {-10.0, -1.0, -1.0, -3.0, -9.0, -5.0, -8.0, -4.0, -7.0, -6.0};
+    private final Double[] emptyArray = {};
 
-    protected Double[] ascending = new Double[10];
-    protected Double[] descending = new Double[10];
-    protected Double[] shuffled = new Double[10];
-    protected Double[] shuffledNeg = new Double[10];
-    protected Double[] empty = {};
+    private Double[] ascending = new Double[10];
+    private Double[] descending = new Double[10];
+    private Double[] shuffled = new Double[10];
+    private Double[] shuffledNeg = new Double[10];
+    private Double[] empty = {};
 
-    protected final Double[] expectedArray = {-1.0, -1.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0};
-    protected final Double[] expectedNegArray = {-10.0, -9.0, -8.0, -7.0, -6.0, -5.0, -4.0, -3.0, -1.0, -1.0};
+    private final Double[] expectedArray = {-1.0, -1.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0};
+    private final Double[] expectedNegArray = {-10.0, -9.0, -8.0, -7.0, -6.0, -5.0, -4.0, -3.0, -1.0, -1.0};
 
     private Double[][] randomArrays;
 
-    protected Sort quickSort;
-    protected Sort mergeSort;
-    protected Sort insertionSort;
-
-
+    private Sort quickSort;
+    private Sort mergeSort;
+    private Sort insertionSort;
 
     @Before
     public void setUp() {
@@ -140,19 +141,19 @@ public class SortTestes {
 
     @Test
     public void automatedTestForQuickSort(){
-        Sort qs = SortFactory.createSort("QuickSort");
+        Sort qs = SortFactory.createSort(SortAlgorithm.QUICK);
         evaluateSort(qs);
     }
 
     @Test
     public void automatedTestForMergeSort(){
-        Sort ms = SortFactory.createSort("MergeSort");
+        Sort ms = SortFactory.createSort(SortAlgorithm.MERGE);
         evaluateSort(ms);
     }
 
     @Test
     public void automatedTestForInsertionSort(){
-        Sort is = SortFactory.createSort("InsertionSort");
+        Sort is = SortFactory.createSort(SortAlgorithm.INSERTION);
         evaluateSort(is);
     }
 

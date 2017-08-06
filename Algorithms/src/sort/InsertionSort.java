@@ -1,4 +1,6 @@
-package Sorting;
+package sort;
+
+import util.Range;
 
 /**
  * Created by Lucas on 01/08/2017.
@@ -6,12 +8,14 @@ package Sorting;
 public class InsertionSort extends Sort {
 
     @Override
-    protected void sort(Double[] array, boolean isAscending) {
-        final int size = array.length;
-        sort(array, new Range(0, size), isAscending);
+    public long sort(Double[] array, boolean isAscending) {
+        long startTime = System.nanoTime();
+        sort(array, new Range(0, array.length), isAscending);
+        long endTime = System.nanoTime();
+
+        return endTime - startTime;
     }
 
-    @Override
     public void sort(Double[] array, Range range, boolean isAscending) {
         if (isAscending) {
             sortAscending(array, range.getLeftIndex(), range.getRightIndex());

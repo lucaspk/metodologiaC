@@ -1,4 +1,4 @@
-package Sorting;
+package util;
 
 public class Range {
     private final int leftIndex;
